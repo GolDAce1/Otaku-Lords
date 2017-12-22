@@ -32,16 +32,31 @@
 
             <h1 class="page-header ">Welcome to Otaku Lords!</h1>
             <div class="col-sm-6" style="background-color:white">
-                <h3>JUST WHO THE HELL DO YOU THINK WE ARE?</h3>
-                <p>Lorem ipsum dolor sit amet, laoreet molestiae ne qui. Mel nullam iudicabit laboramus ei. An quas saepe prodesset eos. Ei percipit inciderint mei.</p>
-                <p>Id vim illud assentior. An nam noluisse evertitur dissentiet, ex facer alienum perfecto mei, ne mel option interesset. Cum ut nisl habeo, viris tation interesset duo eu. Quem verterem scriptorem vix ea, solet soleat qui te. Ut est erroribus argumentum, an per odio aeterno, utroque signiferumque ius cu. Purto harum noluisse an vis.</p>
-                <p>An pri ferri mundi intellegam, ea vel natum inimicus. Prompta ponderum ad mea, mel integre scribentur ad. Mea alia rebum officiis in, ut putant eligendi moderatius eum. Eos ei atqui deseruisse inciderint, an mea quis odio. Sea autem affert ancillae ei, sumo ludus id sit, admodum periculis an usu. Sea ei aeque partem. Debet phaedrum ius ea, mel dicta primis abhorreant ei.</p>
-                <p>Ex eam alia fastidii, agam nostrud cu vis. Nec et esse dolore signiferumque, eum impedit scaevola adipisci ei. Euismod verterem pericula et nec, malis dicant singulis ea mei. Facete disputationi ad eam, ut natum utinam eleifend duo. Vidit exerci vivendum his no, legere suscipit cu duo, nec id eripuit voluptatibus.</p>
-                <p>Ea posse omnes vix, elit consectetuer in pri. Semper iisque per at. Nec ad laudem phaedrum, option laboramus ne mel, mei in sonet alterum. Et quo oratio partem gubergren, ipsum eripuit offendit his ut. Purto dicam aeterno quo ex, quem persius mea ei. Quot salutandi dissentiunt ex sit.</p><p>Lorem ipsum dolor sit amet, laoreet molestiae ne qui. Mel nullam iudicabit laboramus ei. An quas saepe prodesset eos. Ei percipit inciderint mei.</p>
-                <p>Id vim illud assentior. An nam noluisse evertitur dissentiet, ex facer alienum perfecto mei, ne mel option interesset. Cum ut nisl habeo, viris tation interesset duo eu. Quem verterem scriptorem vix ea, solet soleat qui te. Ut est erroribus argumentum, an per odio aeterno, utroque signiferumque ius cu. Purto harum noluisse an vis.</p>
-                <p>An pri ferri mundi intellegam, ea vel natum inimicus. Prompta ponderum ad mea, mel integre scribentur ad. Mea alia rebum officiis in, ut putant eligendi moderatius eum. Eos ei atqui deseruisse inciderint, an mea quis odio. Sea autem affert ancillae ei, sumo ludus id sit, admodum periculis an usu. Sea ei aeque partem. Debet phaedrum ius ea, mel dicta primis abhorreant ei.</p>
-                <p>Ex eam alia fastidii, agam nostrud cu vis. Nec et esse dolore signiferumque, eum impedit scaevola adipisci ei. Euismod verterem pericula et nec, malis dicant singulis ea mei. Facete disputationi ad eam, ut natum utinam eleifend duo. Vidit exerci vivendum his no, legere suscipit cu duo, nec id eripuit voluptatibus.</p>
-                <p>Ea posse omnes vix, elit consectetuer in pri. Semper iisque per at. Nec ad laudem phaedrum, option laboramus ne mel, mei in sonet alterum. Et quo oratio partem gubergren, ipsum eripuit offendit his ut. Purto dicam aeterno quo ex, quem persius mea ei. Quot salutandi dissentiunt ex sit.</p>
+                <h3>Just who the hell do you think we are?</h3>
+               <p> We are an international clan for weebs across the globe. If you like anime, manga or anything else related to japanese pop culture? That means you finally found the place you have been looking for! </p>
+                 
+                  
+                <h3>What type of clan is this?</h3>
+                <p> The first and most important thing to remember is.. We are made this clan for enjoyment, time pass and to have fun with members with similar interests. We take clan chest seriously tho.. but we arent forcing anyone to get crowns all the time.
+                      <br /> 
+                    We do have a few rules tho..
+                   <br />
+                   1) Donate or you get kicked instantly.
+                   <br />
+                   2) Dont swear too much we try to maintain PG-13 at all times.
+                   <br />
+                   3) Try to get Atleast 20 crowns in the clan chest.. if you cant do that..go ahead and inform the reason to a Co-Lead or the Lead himself. </p>
+               
+                   <h3>Whats the group chat thingy?</h3>
+                   We try to keep the clan chat classy, tho sometimes we do talk for hours and hours.. If you want pure random chat anout any topic, than join our instagram group chat.
+                  <br />
+                   Every member can join it! ( wait their is an age limit tho..   ) 
+                   <br /> 
+                   If you do wanna join the clan and its full? No worries you can just message the lead directly on insta.. and we might make a place for you soon. Till the time comes you can enter our group chat just to get along with the members in the clan
+                   <br />
+                   Leads ID: Yolo._.30
+                   <br />
+                   Co-Leads ID ( incase ): scotthomasmoree n shlonglonglong
             </div>
             <div class="col-sm-6 ">
                 <div class="well well-sm">
