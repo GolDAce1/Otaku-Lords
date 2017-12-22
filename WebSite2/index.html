@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <script src="Scripts/angular.js"></script>
+    <script> var app = angular.module("ClanMembers", []);
+        app.controller("AceController", function ($scope) { 
+            $scope.Ace = "Gol D";
+            var khan = "Ace";
+            $scope.lastName = khan;
+            
+        });
+    </script>
+    <Style>
+        body {
+            background-image: url("http://ak1.picdn.net/shutterstock/videos/1164391/thumb/1.jpg");
+            background-size: cover;
+        }
+        .row {
+            text-align: center;
+        }
+        .Otaku-lord-style {
+            color: red;
+        }
+    </Style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Otaku Lord</title>
+</head>
+
+<body ng-app="ClanMembers" ng-controller="AceController">
+    <div class="row otaku-lord-style">
+        <div class="col-md-12">
+            <img src="https://statsroyale.com/images/badges/16000026.png" />
+            <br />
+            <h1>Otaku Lords</h1>
+            <br />
+            <h2>- May The Force Be With You -</h2>
+            <br />
+            <a href="Otaku Lordss.aspx"> <button>Enter</button></a>
+            <div class="col-md-12">
+                Do you like death note?sergserg
+                <label><input type="checkbox">Yes</label>
+                <label><input type="checkbox">No</label>
+                <br />
+                {{Ace + ' ' + lastName}}
+               
+            </div>
+        </div>
+
+    </div>
+    <details-page></details-page>
+</body>
+</html>
