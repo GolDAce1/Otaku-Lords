@@ -20,12 +20,25 @@
         .Otaku-lord-style {
             color: red;
         }
+        .shout-out-border {
+            border: inset 5px #DAB2EE;
+            border-radius: 20px;
+        }
+        img {
+        margin-top: 10px;
+        
+        }
+        .shout-out {
+        color:white;
+        }
+        
     </Style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Otaku Lord</title>
 </head>
 
 <body ng-app="ClanMembers" ng-controller="AceController">
+
     <div class="row otaku-lord-style">
         <div class="col-md-12">
             <img src="https://statsroyale.com/images/badges/16000026.png" />
@@ -34,17 +47,28 @@
             <br />
             <h2>- May The Force Be With You -</h2>
             <br />
-            <a href="Otaku Lordss.aspx"> <button>Enter</button></a>
-            <div class="col-md-12">
+            <a href="Otaku Lordss.aspx" > <button style="margin-bottom: 15px;">Enter</button></a>
+            <!--<div class="col-md-12">
                 Do you like death note?sergserg
                 <label><input type="checkbox">Yes</label>
                 <label><input type="checkbox">No</label>
                 <br />
                 {{Ace + ' ' + lastName}}
-               
-            </div>
-        </div>
 
+            </div>-->
+        </div>
+        <div class="row otaku-lord-style">
+
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 shout-out-border">
+                <img src="https://vignette.wikia.nocookie.net/clashroyale/images/3/3c/RoyalGhostCard.png/revision/latest?cb=20171212203643" />
+                
+                <h3 class="shout-out">Shout out to Hood for being the first to get Royal Ghost! Way to go man!</h3>
+
+            </div>
+            
+
+        </div>
     </div>
     <details-page></details-page>
 </body>
