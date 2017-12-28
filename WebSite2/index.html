@@ -3,6 +3,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         var app = angular.module("ClanMembers", ['ui.bootstrap']);
         app.controller("AceController", function ($scope) {
@@ -24,6 +25,11 @@
                     default:
                         $scope.navSelection = 'home';
                 }
+            };
+            $scope.dynamicPopover = {
+                content: 'Hello, World!',
+                templateUrl: 'myPopoverTemplate.html',
+                title: 'Title'
             };
             $scope.oneAtATime = true;
 
@@ -50,6 +56,69 @@
                 isFirstOpen: true,
                 isFirstDisabled: false
             };
+
+            //get clan data from api
+            $scope.clanInfoFromApi = {};
+            $scope.members = {};
+            httpHeader = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    data: '',
+                    Auth: 'ad3aadadb7af40e5ab8fb5e9459e10a2a57c7e96cebe4b38a22e6183bb59bdac'
+                }
+            }
+
+            fetch('http://api.cr-api.com/clan/CVYQPJV', httpHeader).then(response =>
+                response.json().then(data => ({
+                    data: data,
+                    status: response.status
+                })
+                ).then(res => {
+                    $scope.clanInfoFromApi = res.data;
+                    $scope.members = $scope.clanInfoFromApi.members;
+
+                    createDonationsArray($scope.members);
+                    createCCArray($scope.members);
+                    console.log(res.status, res.data)
+                }));
+
+            //find current 1st place donations
+            $scope.firstDonations = "";
+            $scope.secondDonations = "";
+            $scope.thirdDonations = "";
+
+            $scope.donationsArray = [];
+            function createDonationsArray(members) {
+                for (var i = 0; i < $scope.members.length; i++) {
+                    $scope.donationsArray.push($scope.members[i].donations);
+                }
+                $scope.donationsArray.sort(function (a, b) { return b - a });
+                console.log($scope.donationsArray);
+                $scope.firstDonations = $scope.donationsArray[0];
+                $scope.secondDonations = $scope.donationsArray[1];
+                $scope.thirdDonations = $scope.donationsArray[2];
+                console.log('1st place donations: ' + $scope.firstDonations + 'second place donatins: ' + $scope.secondDonations + 'third place donations: ' + $scope.thirdDonations);
+
+            }
+
+            //find high CC earner
+            $scope.firstCC = "";
+            $scope.secondCC = "";
+            $scope.thirdCC = "";
+            $scope.ccArray = [];
+            function createCCArray(members) {
+                for (var i = 0; i < $scope.members.length; i++) {
+                    $scope.ccArray.push($scope.members[i].clanChestCrowns);
+                }
+                $scope.ccArray.sort(function (a, b) { return b - a });
+                console.log($scope.ccArray);
+                $scope.firstCC = $scope.ccArray[0];
+                $scope.secondCC = $scope.ccArray[1];
+                $scope.thirdCC = $scope.ccArray[2];
+                console.log('1st place clan chest: ' + $scope.firstCC + 'second place clan chest: ' + $scope.secondCC + 'third place clan chest: ' + $scope.thirdCC);
+
+            }
         });
     </script>
     <Style>
@@ -80,17 +149,65 @@
         }
 
         .home-page-buttons {
+            line-height: 36px;
             margin-bottom: 15px;
+            height: 50px;
             border: solid 5px #DAB2EE;
             border-radius: 15px;
             color: aquamarine !important;
         }
-        .home-page-buttons:hover {
-        cursor: pointer;
-        font-weight: bold;
-        
+
+            .home-page-buttons:hover {
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+        .flex-container {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            justify-content: space-around;
         }
-        
+
+        .flex-item {
+            border: solid 3px #DAB2EE;
+            border-radius: 5px;
+            padding: 5px;
+            width: 31%;
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        @media only screen and (max-width: 1400px) {
+            .flex-item {
+                border: solid 3px #DAB2EE;
+                border-radius: 5px;
+                padding: 5px;
+                width: 45%;
+                margin-top: 10px;
+                color: white;
+                font-weight: bold;
+                font-size: 1.5em;
+                text-align: center;
+            }
+        }
+        .badge-section {
+            font-size: .5em;
+        }
+
+            .badge-section img {
+                width: 40px;
+                height: 40px;
+            }
+
         .left-margin {
         }
     </Style>
@@ -111,15 +228,15 @@
                 <br />
             </div>
             <div class="col-sm-12">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
 
 
                     <div class="col-sm-12">
                         <div class="col-sm-3 home-page-buttons" ng-click="toggleContent('home')">Home</div>
-                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('faqs')">About / Faqs</div>
-                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('members')">Member Info</div>
-                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('wl')">Waiting List</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('faqs')">Faqs</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('members')">Members</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('wl')">Join</div>
                     </div>
 
 
@@ -141,7 +258,7 @@
         </div>
         <!--end home page-->
         <!-- faqs page-->
-        <div ng-show="navSelection === 'faqs'"  class="col-sm-12">
+        <div ng-show="navSelection === 'faqs'" class="col-sm-12">
             <div class="row otaku-lord-style">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8 shout-out-border">
@@ -196,9 +313,9 @@
                                             <br />
                                             If you do wanna join the clan and its full? No worries you can just message the lead directly on insta.. and we might make a place for you soon. Till the time comes you can enter our group chat just to get along with the members in the clan
                                             <br />
-                                            Leads ID: Yolo._.30
+                                            Leads ID: scotthomasmoree
                                             <br />
-                                            Co-Leads ID ( incase ): scotthomasmoree n shlonglonglong
+                                            Co-Leads ID ( incase ): Yolo._.30 n shlonglonglong
                                         </p>
 
                                     </accordion-group>
@@ -209,8 +326,8 @@
                                         </accordion-heading>
 
                                         <p>
-                                           Promotions are given out as needed based on merit. It has nothing to do with your performance in, trophies, clan chest crowns or donations. We have other methods for showing recongition for doing well and given alot of effort in these areas. As only a few  lead roles are necessary for accepting members, kicking problematic or inactive players etc only a few people will have these promotions. <br />
-                                           In general someone will only be promoted if we realized the clan needs a additional individual to help with clan needs. These promotion will be based primarily on your maturity, activity and being a good "fit". 
+                                            Promotions are given out as needed based on merit. It has nothing to do with your performance in, trophies, clan chest crowns or donations. We have other methods for showing recongition for doing well and given alot of effort in these areas. As only a few  lead roles are necessary for accepting members, kicking problematic or inactive players etc only a few people will have these promotions. <br />
+                                            In general someone will only be promoted if we realized the clan needs a additional individual to help with clan needs. These promotion will be based primarily on your maturity, activity and being a good "fit".
                                         </p>
 
                                     </accordion-group>
@@ -223,10 +340,12 @@
                                         <img src="https://statsroyale.com/images/badges/16000026.png" height="50" />
                                     </h3>
                                     <ul class="list-group">
-                                        <li class="list-group-item">Tag: #CVYQPJV</li>
+                                        <li class="list-group-item">Tag: {{clanInfoFromApi.tag}}</li>
                                         <li class="list-group-item">Founding Year: 2016</li>
                                         <li class="list-group-item">Clan Location: International</li>
                                         <li class="list-group-item">Preferred Language: English</li>
+                                        <li class="list-group-item">Member Count: {{clanInfoFromApi.memberCount}} / 50</li>
+                                        <li class="list-group-item">Score: {{clanInfoFromApi.score}}</li>
                                         <li class="list-group-item">Founder: F.F.Ace</li>
                                         <li class="list-group-item">Leader: OptikTank</li>
                                         <li class="list-group-item">Co-Leads: (.....) / Hood Boi / Microwave</li>
@@ -246,16 +365,49 @@
         <!--end faqs page-->
         <!-- members page-->
         <div ng-show="navSelection === 'members'" class="col-sm-12">
-           
+            <div class="row otaku-lord-style">
+                <img  src="/images/chevron-16.svg" style="height: 35px"/> 1st place 
+                <img src="/images/chevron-19.svg" style="height: 35px" /> 2nd place
+                <img src="/images/chevron.svg" style="height: 35px" /> 3rd place
+                <ul class="flex-container">
+                    <li ng-repeat="member in clanInfoFromApi.members" class="flex-item" style="background: linear-gradient(to bottom right, black, silver); color: red">
+                        <div class="col-sm-2">
+                            <span class="badge-section" ng-show="member.donations === firstDonations || member.donations === secondDonations || member.donations === thirdDonations">
+                                Donations<br />
+                                <img ng-show="member.donations === firstDonations" src="/images/chevron-16.svg" />
+                                <img ng-show="member.donations === secondDonations" src="/images/chevron-19.svg" />
+                                <img ng-show="member.donations === thirdDonations" src="/images/chevron.svg" />
+                            </span>
+
+                        </div>
+                        <div class="col-sm-8">
+                            {{member.name}} <br />
+                            <span style="font-size: .75em">{{member.role}}</span>
+                            <br />
+                            <span style="font-size: .75em;">Trophies: {{member.trophies}}<br /> CC: {{member.clanChestCrowns}}<br /> Donations: {{member.donations}}<br /> Current Arena: {{member.arena.arenaID}}<br /> Exp Level: {{member.expLevel}}<br /> Tag: {{member.tag}}</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="badge-section" ng-show="member.clanChestCrowns === firstCC || member.clanChestCrowns === secondCC || member.clanChestCrowns === thirdCC">
+                                ClanChest<br />
+                                <img ng-show="member.clanChestCrowns === firstCC" src="/images/chevron-16.svg" />
+                                <img ng-show="member.clanChestCrowns === secondCC" src="/images/chevron-19.svg" />
+                                <img ng-show="member.clanChestCrowns === thirdCC" src="/images/chevron.svg" />
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
 
         </div>
         <!--end members page-->
         <!-- wl page-->
-        <div ng-show="navSelection === 'wl'"  class="col-sm-12">
+        <div ng-show="navSelection === 'wl'" class="col-sm-12">
             <div class="row otaku-lord-style">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 shout-out-border">
-                   wl
+                    wl
 
                 </div>
             </div>
