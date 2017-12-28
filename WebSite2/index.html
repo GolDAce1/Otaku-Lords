@@ -1,12 +1,55 @@
 ﻿<html>
 <head>
-    <script src="Scripts/angular.js"></script>
-    <script> var app = angular.module("ClanMembers", []);
-        app.controller("AceController", function ($scope) { 
-            $scope.Ace = "Gol D";
-            var khan = "Ace";
-            $scope.lastName = khan;
-            
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        var app = angular.module("ClanMembers", ['ui.bootstrap']);
+        app.controller("AceController", function ($scope) {
+            $scope.navSelection = 'home';
+            $scope.toggleContent = function (option) {
+                switch (option) {
+                    case 'home':
+                        $scope.navSelection = 'home';
+                        break;
+                    case 'faqs':
+                        $scope.navSelection = 'faqs';
+                        break;
+                    case 'members':
+                        $scope.navSelection = 'members';
+                        break;
+                    case 'wl':
+                        $scope.navSelection = 'wl';
+                        break;
+                    default:
+                        $scope.navSelection = 'home';
+                }
+            };
+            $scope.oneAtATime = true;
+
+            $scope.groups = [
+                {
+                    title: 'Dynamic Group Header - 1',
+                    content: 'Dynamic Group Body - 1'
+                },
+                {
+                    title: 'Dynamic Group Header - 2',
+                    content: 'Dynamic Group Body - 2'
+                }
+            ];
+
+            $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+            $scope.addItem = function () {
+                var newItemNo = $scope.items.length + 1;
+                $scope.items.push('Item ' + newItemNo);
+            };
+
+            $scope.status = {
+                isCustomHeaderOpen: false,
+                isFirstOpen: true,
+                isFirstDisabled: false
+            };
         });
     </script>
     <Style>
@@ -14,61 +57,211 @@
             background-image: url("http://ak1.picdn.net/shutterstock/videos/1164391/thumb/1.jpg");
             background-size: cover;
         }
+
         .row {
             text-align: center;
         }
+
         .Otaku-lord-style {
             color: red;
         }
+
         .shout-out-border {
             border: inset 5px #DAB2EE;
             border-radius: 20px;
         }
+
         img {
-        margin-top: 10px;
-        
+            margin-top: 10px;
         }
+
         .shout-out {
-        color:white;
+            color: aquamarine !important;
+        }
+
+        .home-page-buttons {
+            margin-bottom: 15px;
+            border: solid 5px #DAB2EE;
+            border-radius: 15px;
+            color: aquamarine !important;
+        }
+        .home-page-buttons:hover {
+        cursor: pointer;
+        font-weight: bold;
+        
         }
         
+        .left-margin {
+        }
     </Style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Otaku Lord</title>
 </head>
 
 <body ng-app="ClanMembers" ng-controller="AceController">
 
     <div class="row otaku-lord-style">
-        <div class="col-md-12">
-            <img src="https://statsroyale.com/images/badges/16000026.png" />
-            <br />
-            <h1>Otaku Lords</h1>
-            <br />
-            <h2>- May The Force Be With You -</h2>
-            <br />
-            <a href="Otaku Lordss.aspx" > <button style="margin-bottom: 15px;">Enter</button></a>
-            <!--<div class="col-md-12">
-                Do you like death note?sergserg
-                <label><input type="checkbox">Yes</label>
-                <label><input type="checkbox">No</label>
-                <br />
-                {{Ace + ' ' + lastName}}
-
-            </div>-->
-        </div>
-        <div class="row otaku-lord-style">
-
+        <div class="col-sm-12">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4 shout-out-border">
-                <img src="https://vignette.wikia.nocookie.net/clashroyale/images/3/3c/RoyalGhostCard.png/revision/latest?cb=20171212203643" />
-                
-                <h3 class="shout-out">Shout out to Hood for being the first to get Royal Ghost! Way to go man!</h3>
-
+            <div class="col-sm-4">
+                <img src="https://statsroyale.com/images/badges/16000026.png" />
+                <br />
+                <h1>Otaku Lords</h1>
+                <br />
+                <h2>- May The Force Be With You -</h2>
+                <br />
             </div>
-            
+            <div class="col-sm-12">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-3 home-page-buttons" ng-click="toggleContent('home')">Home</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('faqs')">About / Faqs</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('members')">Member Info</div>
+                        <div class="col-sm-3 home-page-buttons left-margin" ng-click="toggleContent('wl')">Waiting List</div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- main content area-->
+        <!-- home page-->
+        <div ng-show="navSelection === 'home'" class="col-sm-12">
+            <div class="row otaku-lord-style">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 shout-out-border">
+                    <img src="https://vignette.wikia.nocookie.net/clashroyale/images/3/3c/RoyalGhostCard.png/revision/latest?cb=20171212203643" />
+
+                    <h3 class="shout-out">Shout out to Hood for being the first to get Royal Ghost! Way to go man!</h3>
+
+                </div>
+            </div>
+        </div>
+        <!--end home page-->
+        <!-- faqs page-->
+        <div ng-show="navSelection === 'faqs'"  class="col-sm-12">
+            <div class="row otaku-lord-style">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 shout-out-border">
+                    <div class="row otaku-lord-style">
+                        <div class="col-md-12">
+
+                            <h1 class="page-header ">Welcome to Otaku Lords!</h1>
+                            <div class="col-sm-6" style="background-color:transparent">
+                                <accordion close-others="oneAtATime">
+
+                                    <accordion-group is-open="true">
+
+                                        <accordion-heading>
+                                            Just who the hell do you think we are? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                                        </accordion-heading>
+
+                                        <p>
+                                            We are an international clan for weebs across the globe. If you like anime, manga or anything else related to japanese pop culture? That means you finally found the place you have been looking for!
+                                        </p>
+
+                                    </accordion-group>
+
+
+                                    <accordion-group>
+
+                                        <accordion-heading>
+                                            What type of clan is this? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                                        </accordion-heading>
+
+                                        <p>
+                                            The first and most important thing to remember is.. We are made this clan for enjoyment, time pass and to have fun with members with similar interests. We take clan chest seriously tho.. but we arent forcing anyone to get crowns all the time.
+                                            <br />
+                                            We do have a few rules tho..
+                                            <br />
+                                            1) Donate or you get kicked instantly.
+                                            <br />
+                                            2) Dont swear too much we try to maintain PG-13 at all times.
+                                            <br />
+                                            3) Try to get Atleast 20 crowns in the clan chest.. if you cant do that..go ahead and inform the reason to a Co-Lead or the Lead himself.
+                                        </p>
+                                    </accordion-group>
+                                    <accordion-group>
+
+                                        <accordion-heading>
+                                            Whats the group chat thingy? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                                        </accordion-heading>
+
+                                        <p>
+                                            We try to keep the clan chat classy, tho sometimes we do talk for hours and hours.. If you want pure random chat anout any topic, than join our instagram group chat.
+                                            <br />
+                                            Every member can join it! ( wait their is an age limit tho..   )
+                                            <br />
+                                            If you do wanna join the clan and its full? No worries you can just message the lead directly on insta.. and we might make a place for you soon. Till the time comes you can enter our group chat just to get along with the members in the clan
+                                            <br />
+                                            Leads ID: Yolo._.30
+                                            <br />
+                                            Co-Leads ID ( incase ): scotthomasmoree n shlonglonglong
+                                        </p>
+
+                                    </accordion-group>
+                                    <accordion-group>
+
+                                        <accordion-heading>
+                                            How can I earn a Promotion? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                                        </accordion-heading>
+
+                                        <p>
+                                           Promotions are given out as needed based on merit. It has nothing to do with your performance in, trophies, clan chest crowns or donations. We have other methods for showing recongition for doing well and given alot of effort in these areas. As only a few  lead roles are necessary for accepting members, kicking problematic or inactive players etc only a few people will have these promotions. <br />
+                                           In general someone will only be promoted if we realized the clan needs a additional individual to help with clan needs. These promotion will be based primarily on your maturity, activity and being a good "fit". 
+                                        </p>
+
+                                    </accordion-group>
+                                </accordion>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="well well-sm">
+                                    <h3>
+                                        Otaku Lords
+                                        <img src="https://statsroyale.com/images/badges/16000026.png" height="50" />
+                                    </h3>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Tag: #CVYQPJV</li>
+                                        <li class="list-group-item">Founding Year: 2016</li>
+                                        <li class="list-group-item">Clan Location: International</li>
+                                        <li class="list-group-item">Preferred Language: English</li>
+                                        <li class="list-group-item">Founder: F.F.Ace</li>
+                                        <li class="list-group-item">Leader: OptikTank</li>
+                                        <li class="list-group-item">Co-Leads: (.....) / Hood Boi / Microwave</li>
+                                        <li class="list-group-item">
+                                            Group Chat: Instagram
+                                            <img class="lineIcon" height="35" src="//www.brandchannel.com/wp-content/uploads/2016/05/instagram-new-logo-may-2016.jpg">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--end faqs page-->
+        <!-- members page-->
+        <div ng-show="navSelection === 'members'" class="col-sm-12">
+           
 
         </div>
+        <!--end members page-->
+        <!-- wl page-->
+        <div ng-show="navSelection === 'wl'"  class="col-sm-12">
+            <div class="row otaku-lord-style">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 shout-out-border">
+                   wl
+
+                </div>
+            </div>
+        </div>
+        <!--end wl page-->
+        <!-- end main content area-->
     </div>
     <details-page></details-page>
 </body>
